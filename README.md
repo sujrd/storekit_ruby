@@ -7,7 +7,7 @@ This is a no frills gem for verifying Apple App Store In App Purchase receipts.
 
 ## Installation
 
-  $ gem install storekit
+    $ gem install storekit
 
 ## Usage
 
