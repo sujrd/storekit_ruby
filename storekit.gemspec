@@ -12,6 +12,10 @@ Gem::Specification.new do |s|
   s.email         = 'douglas@dteoh.com'
   s.has_rdoc      = false
   s.files         = `git ls-files -z`.split("\x0")
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = %w(lib)
   s.license       = 'MIT'
+
+  s.add_development_dependency 'rake'
+  s.add_development_dependency 'minitest'
 end
