@@ -1,5 +1,6 @@
 # storekit_ruby
 
+[![Build Status](https://travis-ci.org/sujrd/storekit_ruby.svg?branch=master)](https://travis-ci.org/sujrd/storekit_ruby)
 [![Code Climate](https://codeclimate.com/github/sujrd/storekit_ruby/badges/gpa.svg)](https://codeclimate.com/github/sujrd/storekit_ruby)
 [![Gem Version](http://img.shields.io/gem/v/storekit.svg)](https://rubygems.org/gems/storekit)
 
