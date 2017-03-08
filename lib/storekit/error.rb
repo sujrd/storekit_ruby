@@ -25,5 +25,32 @@ module StoreKit
     def server_error?
       [21004, 21007, 21008].include?(status_code) || message == 'Unknown error'
     end
+
+    def self.new status_code
+      return super if self != ValidationError
+
+      type =
+        case status_code
+        when 21000 then InvalidJsonError
+        when 21002 then InvalidReceiptFormatError
+        when 21003 then ReceiptAuthenticationError
+        when 21004 then InvalidSharedSecretError
+        when 21005 then ReceiptServerUnavailableError
+        when 21006 then SubscriptionExpiredError
+        when 21007 then TestEnvironmentRequiredError
+        when 21008 then ProductionEnvironmentRequiredError
+        end
+
+      type.is_a?(NilClass) && super || type.new(status_code)
+    end
   end
+
+  class InvalidJsonError < ValidationError; end
+  class InvalidReceiptFormatError < ValidationError; end
+  class ReceiptAuthenticationError < ValidationError; end
+  class InvalidSharedSecretError < ValidationError; end
+  class ReceiptServerUnavailableError < ValidationError; end
+  class SubscriptionExpiredError < ValidationError; end
+  class TestEnvironmentRequiredError < ValidationError; end
+  class ProductionEnvironmentRequiredError < ValidationError; end
 end
