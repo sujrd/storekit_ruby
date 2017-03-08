@@ -29,26 +29,17 @@ module StoreKit
     def self.new status_code
       return super if self != ValidationError
 
-      @status_code = status_code
       type =
-      case status_code
-      when 21000
-        InvalidJsonError
-      when 21002
-        InvalidReceiptFormatError
-      when 21003
-        ReceiptAuthenticationError
-      when 21004
-        SharedSecretInvalidError
-      when 21005
-        ReceiptServerUnavailableError
-      when 21006
-        SubscriptionExpiredError
-      when 21007
-        TestEnvironmentRequiredError
-      when 21008
-        ProductionEnvironmentRequiredError
-      end
+        case status_code
+        when 21000 then InvalidJsonError
+        when 21002 then InvalidReceiptFormatError
+        when 21003 then ReceiptAuthenticationError
+        when 21004 then InvalidSharedSecretError
+        when 21005 then ReceiptServerUnavailableError
+        when 21006 then SubscriptionExpiredError
+        when 21007 then TestEnvironmentRequiredError
+        when 21008 then ProductionEnvironmentRequiredError
+        end
 
       type.is_a?(NilClass) && super || type.new(status_code)
     end
@@ -57,7 +48,7 @@ module StoreKit
   class InvalidJsonError < ValidationError; end
   class InvalidReceiptFormatError < ValidationError; end
   class ReceiptAuthenticationError < ValidationError; end
-  class SharedSecretInvalidError < ValidationError; end
+  class InvalidSharedSecretError < ValidationError; end
   class ReceiptServerUnavailableError < ValidationError; end
   class SubscriptionExpiredError < ValidationError; end
   class TestEnvironmentRequiredError < ValidationError; end
