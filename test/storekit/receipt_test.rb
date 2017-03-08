@@ -141,24 +141,4 @@ module StoreKit
       }
     end
   end
-
-  class ErrorTest < Test
-    def test_exceptions
-      err_codes = [21000, 21002, 21003, 21004, 21005, 21006, 21007, 21008]
-      classes = %w(
-        InvalidJsonError
-        InvalidReceiptFormatError
-        ReceiptAuthenticationError
-        InvalidSharedSecretError
-        ReceiptServerUnavailableError
-        SubscriptionExpiredError
-        TestEnvironmentRequiredError
-        ProductionEnvironmentRequiredError)
-
-      err_codes.each.with_index do |code, i|
-        receipt = ValidationError.new(code)
-        assert_equal receipt.class.to_s, "StoreKit::#{classes[i]}"
-      end
-    end
-  end
 end
