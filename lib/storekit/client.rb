@@ -3,7 +3,7 @@ module StoreKit
   PRODUCTION_HOST = 'buy.itunes.apple.com'
 
   class Client
-    attr_accessor :shared_secret
+    attr_accessor :shared_secret, :last_response
 
     def self.sandbox
       new(SANDBOX_HOST)
@@ -28,12 +28,13 @@ module StoreKit
       resp = @http.request(req)
 
       decoded = JSON.parse resp.body
+      @last_response = ReceiptResponse.new(decoded)
 
-      if decoded['status'] == 0
-        Receipt.new decoded
-      else
+      if decoded['status'] != 0
         raise ValidationError.new decoded['status']
       end
+
+      @last_response
     end
   end
 end

@@ -9,14 +9,14 @@ module StoreKit
       @status_code = status_code
       message =
         case status_code
-        when 21000 then 'The App Store could not read the JSON object you provided.'
-        when 21002 then 'The data in the receipt-data property was malformed or missing.'
-        when 21003 then 'The receipt could not be authenticated.'
-        when 21004 then 'The shared secret you provided does not match the shared secret on file for your account.'
-        when 21005 then 'The receipt server is not currently available.'
-        when 21006 then 'This receipt is valid but the subscription has expired.'
-        when 21007 then 'This receipt is from the test environment, but it was sent to the production environment for verification.'
-        when 21008 then 'This receipt is from the production environment, but it was sent to the test environment for verification.'
+        when 21000 then 'The App Store could not read the JSON object you provided (21000).'
+        when 21002 then 'The data in the receipt-data property was malformed or missing (21002).'
+        when 21003 then 'The receipt could not be authenticated (21003).'
+        when 21004 then 'The shared secret you provided does not match the shared secret on file for your account (21004).'
+        when 21005 then 'The receipt server is not currently available (21005).'
+        when 21006 then 'This receipt is valid but the subscription has expired (21006).'
+        when 21007 then 'This receipt is from the test environment, but it was sent to the production environment for verification (21007).'
+        when 21008 then 'This receipt is from the production environment, but it was sent to the test environment for verification (21008).'
         else 'Unknown error'
         end
       super(message)
