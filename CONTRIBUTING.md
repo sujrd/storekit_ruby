@@ -8,8 +8,8 @@ know before you start:
 * New features are accepted or rejected at the sole discretion of the project
   maintainers.
 * Code changes that break the CI build will not be accepted.
-* Code changes must be accompanied with unit tests, unless approved otherwise
-  by the project maintainers.
+* Code changes must be accompanied with tests, unless approved otherwise by the
+  project maintainers.
 * Code changes are accepted or rejected at the sole discretion of the project
   maintainers.
 
